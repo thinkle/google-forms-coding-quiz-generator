@@ -13,28 +13,13 @@
 </script>
 
 <main>
-  <h1>Vite + Svelte + AppsScript</h1>
+  <h1>Coding Quiz Fun Time!</h1>
   <Block>
-    <h2>I am a Svelte Component</h2>
-    <Counter />
-    <br />
-    <a href="https://learn.svelte.dev/tutorial/welcome-to-svelte">
-      Learn Svelte
-    </a>
-  </Block>
-  <Block>
-    <h2>I am a Material Icon</h2>
-    <Icon fontSize="32px" icon={work.round} />
-  </Block>
-  <Block>
-    <h2>I am an Apps Script Call</h2>
-    {#if email}
-      Why, hello there, {email}. Look, I made an API call!
-    {/if}
-  </Block>
-  <Block>
-    Wow, we are in a {context.container}
-    being run from {context.addOn}.
+    <p>Cat Image</p>
+    <img
+      alt="cat"
+      src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_November_2010-1a.jpg"
+    />
   </Block>
   <div>
     <span class="gray">
@@ -52,4 +37,7 @@
 </main>
 
 <style>
+  img {
+    max-width: 90%;
+  }
 </style>

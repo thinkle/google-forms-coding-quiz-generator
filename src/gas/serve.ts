@@ -19,7 +19,7 @@ export function showSidebar() {
 }
 
 export function getAppForAddOn(
-  addOn: "Slides" | "Docs" | "Sheets" | "Unknown"
+  addOn: "Slides" | "Docs" | "Sheets" | "Forms" | "Unknown"
 ) {
   if (addOn == "Slides") {
     return SlidesApp;
@@ -27,6 +27,8 @@ export function getAppForAddOn(
     return DocumentApp;
   } else if (addOn == "Sheets") {
     return SpreadsheetApp;
+  } else if (addOn == "Forms") {
+    return FormApp;
   }
   throw new Error(`Unknown addOn ${addOn}`);
 }

@@ -18,16 +18,29 @@ export function getAddOnEnvironment():
   | "Slides"
   | "Docs"
   | "Sheets"
+  | "Forms"
   | "Unknown" {
-  if (typeof SlidesApp !== "undefined" && SlidesApp.getUi()) {
+  try {
+    SlidesApp.getUi();
     return "Slides";
-  } else if (typeof DocumentApp !== "undefined" && DocumentApp.getUi()) {
+  } catch (err) {}
+
+  try {
+    DocumentApp.getUi();
     return "Docs";
-  } else if (typeof SpreadsheetApp !== "undefined" && SpreadsheetApp.getUi()) {
+  } catch (err) {}
+
+  try {
+    SpreadsheetApp.getUi();
     return "Sheets";
-  } else {
-    return "Unknown";
-  }
+  } catch (err) {}
+
+  try {
+    FormApp.getUi();
+    return "Forms";
+  } catch (err) {}
+
+  return "Unknown";
 }
 
 export function onOpen(e: any): void {
@@ -36,8 +49,13 @@ export function onOpen(e: any): void {
   let menu: GoogleAppsScript.Base.Menu;
   let specificAddOn: AddOnInterface;
   let addOnType = getAddOnEnvironment();
-  if (addOnType == "Slides") {
-    specificAddOn = slidesAddOn;
+  if (addOnType == "Forms") {
+    specificAddOn = {
+      initUi() {
+        return FormApp.getUi();
+      },
+      addToMenu(menu: GoogleAppsScript.Base.Menu) {},
+    };
   }
   if (specificAddOn) {
     ui = specificAddOn.initUi();
