@@ -1,0 +1,7 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./src/gas/tsconfig.json" },
+    { "path": "./src/svelte/tsconfig.json" }
+  ]
+}
